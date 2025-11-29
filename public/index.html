@@ -705,15 +705,11 @@
         }
 
         function viewLink(id) {
-            fetch(`${API_URL}/api/links/${id}/click`, { method: 'POST' });
-            // Obtener el enlace y abrir
-            fetch(`${API_URL}/api/links/${id}`).then(r => r.json()).then(link => {
-                window.open(link.url, '_blank');
-            });
+            window.open(`${API_URL}/preview/${id}`, '_blank');
         }
 
         function openShareModal(id) {
-            const url = `${window.location.origin}?link=${id}`;
+            const url = `${window.location.origin}/preview/${id}`;
             document.getElementById('shareUrl').value = url;
             document.getElementById('shareModal').classList.add('active');
         }
